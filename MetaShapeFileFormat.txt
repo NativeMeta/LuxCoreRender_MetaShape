@@ -1,0 +1,32 @@
+.env file format
+
+"%lf" //threshold for field function
+
+.nms file format
+
+"%d\n"	//meta shape count
+"%d\n"	//meta shape type ELLIPSOID=1, COMPOSITE=4, BICUBIC_SURFACE=5
+"%lf %lf\n"	//weight, fusion_scale
+
+case ELLIPSOID:
+	"%lf %lf %lf %lf\n"
+	"%lf %lf %lf %lf\n"
+	"%lf %lf %lf %lf\n"
+	"%lf %lf %lf %lf\n"	// affine matrix for unit sphere
+
+case COMPOSITE:	//(POLYHEDRON, BILINEAR_SURFACE)
+	"%d %d\n"	//use_bilinear=1, face_cnt
+	//loop face_cnt times
+		"%d\n" //vertices_max
+		//loop vertices_max times
+			" %lf %lf %lf"	//vertices
+
+case BICUBIC_SURFACE:
+	"%f\n" //base thickness
+	"%d\n" //patch_cnt
+	//loop patch_cnt times	( 4 * 4 control points net )
+		//loop 4 times
+			//loop 4 times
+				"%lf %lf %lf\n"	//control points
+
+//Currently, the meta shape file is parasitic on the definition of "scene.objects.*.ply" in the "*.scn" file.

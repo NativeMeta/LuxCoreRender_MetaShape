@@ -1,0 +1,24 @@
+How to build LuxCoreRender with MetaShape Extend
+
+- Do the same as WindowsCompile/README.txt first
+
+create "c:/LuxCoreRender" directory
+
+cd C:/LuxCoreRender/WindowsCompile/
+./cmake-build-x64.bat
+
+ some error outputted. then switch to...
+
+Visual Studio 2017
+1) set startup project "luxcoreui"
+2) Linker > Input > Additional Dependencies
+   C:/LuxCoreRender/WindowsCompile/Build_CMake/LuxCore/lib/Release/NativeMetaDll.lib
+   (sorry, "NativeMeta" was used for commercial use on previous platforms, so source code can not be published)
+3) build "release" target project
+4) Add necessary dll files
+
+- test typical meta shape file
+
+load
+ C:/LuxCoreRender/MetaShape_TestFiles/plhd/cornell.cfg
+ C:/LuxCoreRender/MetaShape_TestFiles/bi1/cornell.cfg
