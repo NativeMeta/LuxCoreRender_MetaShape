@@ -5,7 +5,7 @@
 .nms file format
 
 "%d\n"	//meta shape count
-"%d\n"	//meta shape type ELLIPSOID=1, COMPOSITE=4, BICUBIC_SURFACE=5
+"%d\n"	//meta shape type ELLIPSOID=1, CUBE=2, CYLINDER=3, COMPOSITE=4, BICUBIC_SURFACE=5
 "%lf %lf\n"	//weight, fusion_scale
 
 case ELLIPSOID:
@@ -13,6 +13,16 @@ case ELLIPSOID:
 	"%lf %lf %lf %lf\n"
 	"%lf %lf %lf %lf\n"
 	"%lf %lf %lf %lf\n"	// affine matrix for unit sphere
+
+case CUBE:
+	" %lf %lf %lf"...	// cube's 8 vertices
+
+case CYLINDER:
+	"%d %lf %lf\n" // both ends cap shape type, radius, length
+	"%lf %lf %lf %lf\n"
+	"%lf %lf %lf %lf\n"
+	"%lf %lf %lf %lf\n"
+	"%lf %lf %lf %lf\n"	// affine matrix for unit cylinder
 
 case COMPOSITE:	//(POLYHEDRON, BILINEAR_SURFACE)
 	"%d %d\n"	//use_bilinear=1, face_cnt
