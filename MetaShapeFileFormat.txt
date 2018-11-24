@@ -1,11 +1,13 @@
-.env file format
+*.nmc file format
 
-"%lf" //threshold for field function
+"%lf %d"//threshold for field function & include group files(*.nmg) count
+"%s"	//group file name full path
+...	//group file name full path (include group files count times)
 
-.nms file format
+*.nmg file format
 
 "%d\n"	//meta shape count
-"%d\n"	//meta shape type ELLIPSOID=1, CUBE=2, CYLINDER=3, COMPOSITE=4, BICUBIC_SURFACE=5
+"%d\n"	//meta shape type ELLIPSOID=1, CUBE=2, CYLINDER=3, POLYHEDRON,BILINEAR_SURFACE=4, BICUBIC_SURFACE=5
 "%lf %lf\n"	//weight, fusion_scale
 
 case ELLIPSOID:
@@ -24,7 +26,7 @@ case CYLINDER:
 	"%lf %lf %lf %lf\n"
 	"%lf %lf %lf %lf\n"	// affine matrix for unit cylinder
 
-case COMPOSITE:	//(POLYHEDRON, BILINEAR_SURFACE)
+case POLYHEDRON,BILINEAR_SURFACE:
 	"%d %d\n"	//use_bilinear=1, face_cnt
 	//loop face_cnt times
 		"%d\n" //vertices_max
