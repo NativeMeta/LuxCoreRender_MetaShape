@@ -41,4 +41,4 @@ case BICUBIC_SURFACE:
 			//loop 4 times
 				"%lf %lf %lf\n"	//control points
 
-//Currently, the meta shape file is parasitic on the definition of "scene.objects.*.ply" in the "*.scn" file.
+
