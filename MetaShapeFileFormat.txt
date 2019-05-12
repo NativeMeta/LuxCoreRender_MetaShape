@@ -29,7 +29,7 @@ case CYLINDER:
 case POLYHEDRON,BILINEAR_SURFACE:
 	"%d %d\n"	//use_bilinear=1, face_cnt
 	//loop face_cnt times
-		"%d\n" //vertices_max
+		"%d\n" //vertices_max 3 or 4
 		//loop vertices_max times
 			" %lf %lf %lf"	//vertices
 
