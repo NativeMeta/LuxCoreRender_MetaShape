@@ -1,5 +1,6 @@
 *.nmc file format
 
+"%f"	//file format version
 "%lf %d"//threshold for field function & include group files(*.nmg) count
 "%s"	//group file name full path
 ...	//group file name full path (include group files count times)
