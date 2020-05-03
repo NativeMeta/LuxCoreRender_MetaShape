@@ -10,7 +10,7 @@
 "%d\n"	//rendering mode volume_rendering=1, surface_rendering=0
 "%d\n"	//meta shape count
 	//Hereafter, will describe each meta shape
-"%d\n"	//meta shape type ELLIPSOID=1, CUBE=2, CYLINDER=3, POLYHEDRON,BILINEAR_SURFACE=4, BICUBIC_SURFACE=5
+"%d\n"	//meta shape type ELLIPSOID=1, CUBE=2, CYLINDER=3, POLYHEDRON,BILINEAR_SURFACE=4, BICUBIC_SURFACE=5, SPLINE=6
 "%lf %lf\n"	//weight, fusion_scale
 
 case ELLIPSOID:
@@ -44,4 +44,11 @@ case BICUBIC_SURFACE:
 			//loop 4 times
 				"%lf %lf %lf\n"	//control points
 
-
+case SPLINE:
+	"%f\n"	//base thickness
+	"%d\n"	//segment count
+	"%lf %lf %lf"	//control point
+	"%lf %lf %lf"	//control point
+	"%lf %lf %lf"	//control point
+	"%lf %lf %lf"	//control point
+	...
