@@ -7,7 +7,6 @@
 
 *.nmg NativeMeta Group file format
 
-"%d\n"	//rendering mode volume_rendering=1, surface_rendering=0
 "%d\n"	//meta shape count
 	//Hereafter, will describe each meta shape
 "%d\n"	//meta shape type ELLIPSOID=1, CUBE=2, CYLINDER=3, POLYHEDRON,BILINEAR_SURFACE=4, BICUBIC_SURFACE=5, SPLINE=6
