@@ -1,12 +1,16 @@
 *.nmc NativeMeta Cluster file format
 
 "%f"	//file format version
-"%lf %d"//threshold for field function & include group files(*.nmg) count
+"%d"	//rendering mode (1:ray tracing, -1:sphere tracing, 0:mix of ray trace & sphere trace)
+"%lf"	//threshold for field function
+"%d"	//include group files(*.nmg) count
 "%s"	//group file name full path
 ...	//group file name full path (include group files count times)
 
 *.nmg NativeMeta Group file format
 
+"%f"	//file format version
+"%d"	//rendering mode (0:surface rendering, 1:volume rendering)
 "%d\n"	//meta shape count
 	//Hereafter, will describe each meta shape
 "%d\n"	//meta shape type ELLIPSOID=1, CUBE=2, CYLINDER=3, POLYHEDRON,BILINEAR_SURFACE=4, BICUBIC_SURFACE=5, SPLINE=6
