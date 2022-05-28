@@ -26,13 +26,9 @@ case CUBE:
 	" %lf %lf %lf"...	// cube's 8 vertices
 
 case POLYLINE:
-	"%d %lf\n" // both ends cap shape type, radius
-	"%d\n"		// segment count
-	"%lf\n"	//length
-	"%lf %lf %lf %lf\n"
-	"%lf %lf %lf %lf\n"
-	"%lf %lf %lf %lf\n"
-	"%lf %lf %lf %lf\n"	// affine matrix for unit cylinder
+	"%lf\n" // radius
+	"%d %d %d\n"		// both ends cap shape type, segment count, is closed
+	"%lf %lf %lf\n"	// polyline vertices
 
 case CONE:
 	"%lf %lf\n" // radius, length
