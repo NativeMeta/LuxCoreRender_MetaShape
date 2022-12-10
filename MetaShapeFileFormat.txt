@@ -13,7 +13,12 @@
 "%d"	//rendering mode (0:surface rendering, 1:volume rendering)
 "%d\n"	//meta shape count
 	//Hereafter, will describe each meta shape
-"%d\n"	//meta shape type ELLIPSOID=1, CUBE=2, POLYLINE=3, POLYHEDRON,BILINEAR_SURFACE=5, SPLINE=7, BICUBIC_SURFACE=8
+
+// MULTI SHELL DECLARATIONS /////////////////////////////////////////////////////////////////////////////////////////
+"%d %d\n" // Shells count, SHELL defines (0:default meta shape, 1:CSG or, -1:CSG and)
+
+    //Hereafter, will describe each Shells
+"%d\n"	//meta shape type (ELLIPSOID=1, CUBE=2, POLYLINE=3, POLYHEDRON,BILINEAR_SURFACE=5, SPLINE=7, BICUBIC_SURFACE=8)
 "%lf %lf\n"	//weight, fusion_scale
 
 case ELLIPSOID:
@@ -23,19 +28,12 @@ case ELLIPSOID:
 	"%lf %lf %lf %lf\n"	// affine matrix for unit sphere
 
 case CUBE:
-	" %lf %lf %lf"...	// cube's 8 vertices
+	"%lf %lf %lf"...	// cube's 8 vertices (0~3 is x plus direction, 4~7 is x minus direction)
 
 case POLYLINE:
 	"%lf\n" // radius
 	"%d %d %d\n"		// both ends cap shape type, segment count, is closed
 	"%lf %lf %lf\n"	// polyline vertices
-
-case CONE:
-	"%lf %lf\n" // radius, length
-	"%lf %lf %lf %lf\n"
-	"%lf %lf %lf %lf\n"
-	"%lf %lf %lf %lf\n"
-	"%lf %lf %lf %lf\n"	// affine matrix for unit cone
 
 case POLYHEDRON,BILINEAR_SURFACE:
 	"%d %d\n"	//use_bilinear=1, face_cnt
@@ -55,6 +53,67 @@ case SPLINE:
 
 case BICUBIC_SURFACE:
 	"%f\n" //base thickness
+	"%d\n" //patch_cnt
+	//loop patch_cnt times	( 4 * 4 control points net )
+		//loop 4 times
+			//loop 4 times
+				"%lf %lf %lf\n"	//control points
+
+// MULTI CORE DECLARATIONS /////////////////////////////////////////////////////////////////////////////////////////
+"%d\n"	//core count (0:default shell&core, n:user defined cores)
+
+"%d\n"	//meta core type (Point=1, Polyline=2, Spline=3, Polygon=4, BilinearSurface=5, BicubicSurface=6, Polyhedron=7, BilinearSolid=8, BicubicSolid=9)
+"%lf\n"	//core weight
+
+case Point:
+	" %lf %lf %lf\n"
+
+case Polyline:
+	"%d\n"	//vertices count
+	"%lf %lf %lf\n"	// polyline vertices
+
+case Spline:
+	"%d\n"	//segment count
+	"%lf %lf %lf"	//control point
+	"%lf %lf %lf"	//control point
+	"%lf %lf %lf"	//control point
+	"%lf %lf %lf"	//control point
+	...
+
+case Polygon:
+	"%d\n"	//face_cnt
+	//loop face_cnt times
+		"%d\n" //vertices_max 3 or 4
+		//loop vertices_max times
+			" %lf %lf %lf"	//vertices
+
+case BilinearSurface:
+	"%d\n"	//face_cnt
+	//loop face_cnt times
+		//loop vertices 4 times
+			" %lf %lf %lf"	//vertices
+
+case BicubicSurface:
+	"%d\n" //patch_cnt
+	//loop patch_cnt times	( 4 * 4 control points net )
+		//loop 4 times
+			//loop 4 times
+				"%lf %lf %lf\n"	//control points
+
+case Polyhedron:
+	"%d\n"	//face_cnt
+	//loop face_cnt times
+		"%d\n" //vertices_max 3 or 4
+		//loop vertices_max times
+			" %lf %lf %lf"	//vertices
+
+case BilinearSolid:
+	"%d\n"	//face_cnt
+	//loop face_cnt times
+		//loop vertices 4 times
+			" %lf %lf %lf"	//vertices
+
+case BicubicSolid:
 	"%d\n" //patch_cnt
 	//loop patch_cnt times	( 4 * 4 control points net )
 		//loop 4 times
