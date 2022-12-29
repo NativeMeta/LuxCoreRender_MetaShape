@@ -15,7 +15,7 @@
 	//Hereafter, will describe each meta shape
 
 // MULTI SHELL DECLARATIONS /////////////////////////////////////////////////////////////////////////////////////////
-"%d %d\n" // Shells count, SHELL defines (0:default meta shape, 1:CSG or, -1:CSG and)
+"%d %d\n" // Shells count, SHELL defines (0:default meta shape, 1:CSG:Or, -1:CSG:And)
 
     //Hereafter, will describe each Shells
 "%d\n"	//meta shape type (ELLIPSOID=1, CUBE=2, POLYLINE=3, POLYHEDRON,BILINEAR_SURFACE=5, SPLINE=7, BICUBIC_SURFACE=8)
