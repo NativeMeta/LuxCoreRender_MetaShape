@@ -1,7 +1,7 @@
 *.nmc NativeMeta Cluster file format
 
 "%f"	//file format version
-"%d"	//rendering mode (1:ray tracing, -1:sphere tracing, 0:mix of ray trace & sphere trace), -2:sphere tracing(Normal vector is obtained by UV neighbor interpolation)
+"%d"	//rendering mode (1:ray tracing, -1:sphere tracing, 0:mix of ray trace & sphere trace, -2:sphere tracing(Normal vector is obtained by UV neighbor interpolation)), have severe local extrema (0:nothing, 1:severe extrema detection)
 "%l"	//threshold for field function
 "%d"	//include group files(*.nmg) count
 "%s"	//group file name full path
