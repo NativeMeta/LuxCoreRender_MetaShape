@@ -36,7 +36,7 @@ case POLYLINE:
 	"%lf %lf %lf\n"	// polyline vertices
 
 case POLYHEDRON,BILINEAR_SURFACE:
-	"%d %d\n"	//use_bilinear=1, face_cnt
+	"%d %d %d\n"	//(have internal gradient=-1, surface core=0, internal is flat peak & only have external gradient=1), use_bilinear=1, face_cnt
 	//loop face_cnt times
 		"%d\n" //vertices_max 3 or 4
 		//loop vertices_max times
